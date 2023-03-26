@@ -1,0 +1,10 @@
+Flask
+Flask-Session
+gunicorn
+psycopg2
+requests
+flask_sqlalchemy
+sqlalchemy.orm
+flask_apscheduler
+flask_mail
+flask_bootstrap

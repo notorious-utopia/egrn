@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Главная страница
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Дата и время заявки</th>
+                <th>Кадастровый номер</th>
+                <th>Статус заявки</th>
+                <th>Документы</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for row in user_orders %}
+                <tr>
+                    <td>{{ row[5] }}</td>
+                    
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                    <td><form method="post" action="/index">
+                        {% if row[3] == 'Завершен' %}
+                        <button class="btn btn-primary btn-sm" name="download" id="rawtext" value="{{ row[1] }}">Скачать</button>
+
+                        <input type="hidden" name="filename" value="{{ row[5] }}">
+                        {% else %}
+                        <i class="fa-regular fa-circle-question" data-toggle="tooltip" title="Здесь появится ссылка для скачивания, когда документы будут готовы."></i>
+                        
+                        {% endif %}
+                </form>
+            </td>
+                </tr>
+            {% endfor %}
+
+            {% if not user_orders %}
+            <tr>
+                <td colspan="5">Здесь будут отображаться данные о ваших заявках</td>
+                
+            </tr>
+            {% endif %}
+            
+            
+            
+    </table>
+
+
+
+
+<script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
+{% endblock %}

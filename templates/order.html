@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Заказать выписку
+{% endblock %}
+
+{% block main %}
+    <form action="/order" method="post">
+        <p>Введите кадастровый номер объекта недвижимости</p>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="property_object" placeholder="Например, 78:31:0001229:2012" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Заказать</button>
+    </form>
+{% endblock %}
+
+
